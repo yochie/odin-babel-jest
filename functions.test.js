@@ -1,29 +1,49 @@
 import * as functions from "./functions.js";
+describe("capitalize", () => {
+  test("exists", () => {
+    expect(functions.capitalize).toBeDefined();
+  });
 
-test("sum basic", () => {
-  expect(functions.sum(2, 3)).toBe(5);
+  test("happy", () => {
+    expect(functions.capitalize("abc")).toBe("Abc");
+  });
+
+  test("redundant", () => {
+    expect(functions.capitalize("ABC")).toBe("ABC");
+  });
+
+  test("empty", () => {
+    expect(functions.capitalize("")).toBe("");
+  });
+
+  test("single char", () => {
+    expect(functions.capitalize("a")).toBe("A");
+  });
+
+  test("non string throws", () => {
+    expect(() => functions.capitalize(5)).toThrow("arg");
+  });
 });
 
-test("capitalize exists", () => {
-  expect(functions.capitalize).toBeDefined();
-});
+describe("reverseString", () => {
+  test("exists", () => {
+    expect(functions.reverseString).toBeDefined();
+  });
 
-test("capitalize basic", () => {
-  expect(functions.capitalize("abc")).toBe("Abc");
-});
+  test("happy", () => {
+    expect(functions.reverseString("abc")).toBe("cba");
+    expect(functions.reverseString("xyz")).toBe("zyx");
+  });
 
-test("capitalize redundant", () => {
-  expect(functions.capitalize("ABC")).toBe("ABC");
-});
+  test("empty", () => {
+    expect(functions.reverseString("")).toBe("");
+  });
 
-test("capitalize empty", () => {
-  expect(functions.capitalize("")).toBe("");
-});
+  test("single char", () => {
+    expect(functions.reverseString("a")).toBe("a");
+  });
 
-test("capitalize single char", () => {
-  expect(functions.capitalize("a")).toBe("A");
-});
-
-test("capitalize non string", () => {
-  expect(() => functions.capitalize(5)).toThrow("arg");
+  test("bad input throws", () => {
+    expect(() => functions.reverseString(5)).toThrow("arg");
+  });
 });
