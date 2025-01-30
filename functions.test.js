@@ -111,3 +111,30 @@ describe("caesarCipher", () => {
     expect(() => functions.caesarCipher(5)).toThrow("arg");
   });
 });
+
+describe("analyzeArray", () => {
+  test("exists", () => {
+    expect(functions.analyzeArray).toBeDefined();
+  });
+
+  test("returns object with fields", () => {
+    expect(functions.analyzeArray([1, 2, 3]).average).toBeDefined();
+    expect(functions.analyzeArray([1, 2, 3]).min).toBeDefined();
+    expect(functions.analyzeArray([1, 2, 3]).max).toBeDefined();
+    expect(functions.analyzeArray([1, 2, 3]).length).toBeDefined();
+  });
+
+  test("proper results", () => {
+    const result = functions.analyzeArray([1, 8, 3, 4, 2, 6]);
+    expect(result.average).toBe(4);
+    expect(result.min).toBe(1);
+    expect(result.max).toBe(8);
+    expect(result.length).toBe(6);
+  });
+
+  test("throws on improper arg type", () => {
+    expect(() => functions.analyzeArray("abc")).toThrow("must be array");
+    expect(() => functions.analyzeArray(5)).toThrow("must be array");
+    expect(() => functions.analyzeArray(["bad arg", 5])).toThrow("numbers");
+  });
+});

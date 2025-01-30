@@ -79,4 +79,31 @@ function caesarCipher(str, shiftAmount) {
   return shiftedChars.join("");
 }
 
-export { capitalize, reverseString, calculator, caesarCipher };
+function analyzeArray(arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error("Arg must be array");
+  }
+
+  if (arr.some((val) => typeof val !== "number")) {
+    throw new Error("Input array must contain only numbers");
+  }
+
+  const info = {
+    average: average(arr),
+    min: Math.min(...arr),
+    max: Math.max(...arr),
+    length: arr.length,
+  };
+
+  return info;
+}
+
+function average(arr) {
+  const sum = arr.reduce((prev, curr) => {
+    return prev + curr;
+  }, 0);
+
+  return sum / arr.length;
+}
+
+export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };
