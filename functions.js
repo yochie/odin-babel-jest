@@ -47,4 +47,36 @@ const calculator = {
   },
 };
 
-export { capitalize, reverseString, calculator };
+function caesarCipher(str, shiftAmount) {
+  if (typeof str !== "string") {
+    throw new Error("first arg must be string");
+  }
+  if (typeof shiftAmount !== "number") {
+    throw new Error("second arg must be integer");
+  }
+  const lowerBase = "a".charCodeAt(0);
+  const upperBase = "A".charCodeAt(0);
+  const chars = str.split("");
+  const shiftedChars = chars.map((char) => {
+    const charCode = char.charCodeAt(0);
+
+    let newCharCode;
+    let lowerOffset = charCode - lowerBase;
+    let upperOffset = charCode - upperBase;
+    if (lowerOffset >= 0 && lowerOffset < 26) {
+      //lowercase
+      newCharCode = lowerBase + ((lowerOffset + shiftAmount) % 26);
+    } else if (upperOffset >= 0 && upperOffset < 26) {
+      //uppercase
+      newCharCode = upperBase + ((upperOffset + shiftAmount) % 26);
+    } else {
+      //not basic char
+      return char;
+    }
+    return String.fromCharCode(newCharCode);
+  });
+
+  return shiftedChars.join("");
+}
+
+export { capitalize, reverseString, calculator, caesarCipher };

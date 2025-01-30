@@ -84,3 +84,30 @@ describe("calculator", () => {
     expect(() => functions.calculator.divide("a", 5)).toThrow();
   });
 });
+
+describe("caesarCipher", () => {
+  test("exists", () => {
+    expect(functions.caesarCipher).toBeDefined();
+  });
+
+  test("happy", () => {
+    expect(functions.caesarCipher("abc", 1)).toBe("bcd");
+    expect(functions.caesarCipher("abc", 2)).toBe("cde");
+  });
+
+  test("wrap", () => {
+    expect(functions.caesarCipher("xyz", 3)).toBe("abc");
+  });
+
+  test("with uppercase", () => {
+    expect(functions.caesarCipher("xYz", 3)).toBe("aBc");
+  });
+
+  test("with special chars ignored", () => {
+    expect(functions.caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
+
+  test("bad input throws", () => {
+    expect(() => functions.caesarCipher(5)).toThrow("arg");
+  });
+});
