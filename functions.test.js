@@ -47,3 +47,40 @@ describe("reverseString", () => {
     expect(() => functions.reverseString(5)).toThrow("arg");
   });
 });
+
+describe("calculator", () => {
+  test("exists", () => {
+    expect(functions.calculator).toBeDefined();
+    expect(functions.calculator.add).toBeDefined();
+    expect(functions.calculator.subtract).toBeDefined();
+    expect(functions.calculator.divide).toBeDefined();
+    expect(functions.calculator.multiply).toBeDefined();
+  });
+
+  test("add", () => {
+    expect(functions.calculator.add(1, 1)).toBe(2);
+  });
+
+  test("sub", () => {
+    expect(functions.calculator.subtract(3, 1)).toBe(2);
+    expect(functions.calculator.subtract(1, 1)).toBe(0);
+    expect(functions.calculator.subtract(0, 2)).toBe(-2);
+  });
+
+  test("divide", () => {
+    expect(functions.calculator.divide(1, 3)).toBeCloseTo(0.333333);
+    expect(functions.calculator.divide(4, 2)).toBe(2);
+  });
+
+  test("multiply", () => {
+    expect(functions.calculator.multiply(2, 3)).toBe(6);
+    expect(functions.calculator.multiply(4, 2)).toBe(8);
+  });
+
+  test("bad input throws", () => {
+    expect(() => functions.calculator.add("a", 5)).toThrow();
+    expect(() => functions.calculator.subtract("a", 5)).toThrow();
+    expect(() => functions.calculator.multiply("a", 5)).toThrow();
+    expect(() => functions.calculator.divide("a", 5)).toThrow();
+  });
+});

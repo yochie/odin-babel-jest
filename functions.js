@@ -16,4 +16,35 @@ function reverseString(s) {
   return s.split("").reverse().join("");
 }
 
-export { capitalize, reverseString };
+const calculator = {
+  add(a, b) {
+    if (typeof a !== "number" || typeof b !== "number") {
+      throw new Error("Args must be numbers");
+    }
+
+    return a + b;
+  },
+
+  subtract(a, b) {
+    if (typeof a !== "number" || typeof b !== "number") {
+      throw new Error("Args must be numbers");
+    }
+    return a - b;
+  },
+
+  divide(a, b) {
+    if (typeof a !== "number" || typeof b !== "number") {
+      throw new Error("Args must be numbers");
+    }
+    return a / b;
+  },
+
+  multiply(a, b) {
+    if (typeof a !== "number" || typeof b !== "number") {
+      throw new Error("Args must be numbers");
+    }
+    return a * b;
+  },
+};
+
+export { capitalize, reverseString, calculator };
